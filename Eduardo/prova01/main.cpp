@@ -131,7 +131,20 @@ void listar(vector<Passageiro> &passageiros)
 }
 void localizar(vector<Passageiro> &passageiros)
 {
-    cout << "LOCALIZARRR " << endl;
+    string cpf;
+    cout << "insira o cpf do passageiro a ser alterado: ";
+    cin >> cpf;
+    cout << endl;
+
+    for (Passageiro passageiro : passageiros)
+    {
+        if(passageiro.cpf == cpf)
+        {
+            imprimiPassageiro(passageiro);
+            break;
+        }        
+    }
+    
 }
 
 vector<string> menuNomes = {
@@ -172,6 +185,9 @@ void menuOpcoes()
         } else if (opcao == 4)
         {
             listar(passageiros);
+        } else if (opcao == 5)
+        {
+            localizar(passageiros);
         }
         else if (opcao != 0)
         {
