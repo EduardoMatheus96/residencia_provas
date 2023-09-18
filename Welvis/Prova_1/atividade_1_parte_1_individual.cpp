@@ -19,7 +19,38 @@ struct Roteiro{
     string destino;
 };
 
-Passageiro inserirPassageiro(){
+bool autorizacao(Passageiro passageiro){
+    return verificarMaiorIdade(passageiro.dtNascimento);       
+}
+
+bool verificarMaiorIdade(string dataNascimento) {
+    // Extrai o dia, mês e ano da string de data de nascimento
+    int dia = stoi(dataNascimento.substr(0, 2));
+    int mes = stoi(dataNascimento.substr(3, 2));
+    int ano = stoi(dataNascimento.substr(6, 4));
+
+    // Obtém a data atual
+    time_t t = time(nullptr);
+    tm* now = localtime(&t);
+    int anoAtual = now->tm_year + 1900;
+    int mesAtual = now->tm_mon + 1;
+    int diaAtual = now->tm_mday;
+
+    // Calcula a idade da pessoa
+    int idade = anoAtual - ano;
+    if (mes < mesAtual || (mes == mesAtual && dia < diaAtual)) {
+        idade--; // ainda não fez aniversário este ano
+    }
+
+    // Verifica se a pessoa é maior de idade (18 anos ou mais)
+    if (idade >= 18) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void inserirPassageiro(vector<Passageiro> &vetPass){
 
     Passageiro passageiro;
 
@@ -29,14 +60,10 @@ Passageiro inserirPassageiro(){
     cin >> passageiro.nome;
     cout << "Insira sua data de Nascimento 00/00/0000: " << endl;
     cin >> passageiro.dtNascimento;
-    cout << "Insira seu numero de autorizacao: " << endl;
-    cin >> passageiro.numAutorizacao;
-
-    return passageiro;
+    
+    vetPass.push_back(passageiro);   
 
 }
-
-
 
 int main(void){
 
@@ -54,9 +81,17 @@ int main(void){
             cout << opcoesDoMenu << endl;
 
             if(selectedOption == 1)
-                passageiros.push_back(inserirPassageiro());
+                inserirPassageiro(passageiros);
+
+
+
+            cout << passageiros[0].nome;
             
             
+        }else if (selectedOption == 0){
+            break;
+        }else {
+            cout << "Opcao Invalida!!!" << endl;
         }
 
     }while(selectedOption != 0);
@@ -66,3 +101,4 @@ int main(void){
 
     return 0;
 }
+
