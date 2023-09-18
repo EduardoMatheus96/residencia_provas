@@ -86,6 +86,15 @@ bool excluirPassageiro(vector<Passageiro> &vetPass, string CPF){
 
 }
 
+void listarPassageiros(vector<Passageiro> &vetPass) {
+    for (Passageiro pass: vetPass){
+        cout << pass.CPF << endl;
+        cout << pass.nome << endl;
+        cout << pass.dtNascimento << endl;
+        cout << pass.numAutorizacao << endl;
+        cout << endl << endl;
+    }
+}
 
 int main(void){
 
@@ -110,9 +119,6 @@ int main(void){
                 cin >> tempCPF;
                 cout << (excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Não encontrado") << endl;
             }
-
-            // if(selectedOption == 3)
-
             
         }else if (selectedOption == 0){
             break;
