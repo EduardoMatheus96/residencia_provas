@@ -10,7 +10,7 @@ struct Passageiro
     string cpf;
     string nome;
     string dtNascimento;
-    int numAutorizacao;
+    unsigned int numAutorizacao;
 };
 
 struct Roteiro
@@ -21,6 +21,10 @@ struct Roteiro
     string origem;
     string destino;
 };
+
+void verificaData(){
+    
+}
 
 void imprimiPassageiro(Passageiro &passageiro)
 {
