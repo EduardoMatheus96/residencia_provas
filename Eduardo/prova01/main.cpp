@@ -22,6 +22,15 @@ struct Roteiro
     string destino;
 };
 
+void imprimiPassageiro(Passageiro &passageiro)
+{
+    cout << "Passageiro :" << passageiro.nome << endl;
+    cout << "Cpf: " << passageiro.cpf << endl;
+    cout << "Data de Nascimento: " << passageiro.dtNascimento << endl;
+    cout << "Número de autorizacao: " << passageiro.numAutorizacao << endl;
+    cout << endl;
+}
+
 void incluir(vector<Passageiro> &passageiros)
 {
     Passageiro passageiro;
@@ -41,8 +50,12 @@ void incluir(vector<Passageiro> &passageiros)
     passageiros.push_back(passageiro);
 }
 
-void excluir(vector<Passageiro> &passageiros, string cpf)
+void excluir(vector<Passageiro> &passageiros)
 {
+    string cpf;
+    cout << "insira o cpf do passageiro a ser excluido: ";
+    cin >> cpf;
+    cout << endl;
     for (auto it = passageiros.begin(); it != passageiros.end(); ++it)
     {
         if (it->cpf == cpf)
@@ -51,16 +64,70 @@ void excluir(vector<Passageiro> &passageiros, string cpf)
             it = passageiros.erase(it);
             break;
         }
-        
     }
+    cout << endl;
 }
 void alterar(vector<Passageiro> &passageiros)
 {
-    cout << "ALTERARRR " << endl;
+    string cpf;
+    cout << "insira o cpf do passageiro a ser alterado: ";
+    cin >> cpf;
+    cout << endl;
+    for (auto it = passageiros.begin(); it != passageiros.end(); ++it)
+    {
+        if (it->cpf == cpf)
+        {
+            int escolha;
+            imprimiPassageiro(*it);
+            do
+            {
+                cout << "Qual o campo do passageiro voce deseja alterar: " << endl;
+                cout << "1.Nome" << endl;
+                cout << "2.Cpf" << endl;
+                cout << "3.Data de nascimento" << endl;
+                cout << "Insira sua escolha: ";
+                cin >> escolha;
+                cout << endl;
+                if (escolha == 1)
+                {
+                    string nome;
+                    cout << "Insira o nome: ";
+                    cin >> nome;
+                    cout << endl;
+                    it->nome = nome;
+                }
+                else if (escolha == 2)
+                {
+                    string cpf;
+                    cout << "Insira o cpf: ";
+                    cin >> cpf;
+                    cout << endl;
+                    it->cpf = cpf;
+                }
+                else if (escolha == 3)
+                {
+                    string dataNascimento;
+                    cout << "Insira a data de nascimento: ";
+                    cin >> dataNascimento;
+                    cout << endl;
+                    it->dtNascimento = dataNascimento;
+                }
+
+            } while (escolha < 1 || escolha > 3);
+            imprimiPassageiro(*it);
+            break;
+        }
+    }
+
+    cout << endl;
 }
 void listar(vector<Passageiro> &passageiros)
 {
-    cout << "LISTARRRR " << endl;
+    for (Passageiro passageiro : passageiros)
+    {
+        imprimiPassageiro(passageiro);
+    }
+    
 }
 void localizar(vector<Passageiro> &passageiros)
 {
@@ -94,6 +161,17 @@ void menuOpcoes()
         if (opcao == 1)
         {
             incluir(passageiros);
+        }
+        else if (opcao == 2)
+        {
+            excluir(passageiros);
+        }
+        else if (opcao == 3)
+        {
+            alterar(passageiros);
+        } else if (opcao == 4)
+        {
+            listar(passageiros);
         }
         else if (opcao != 0)
         {
