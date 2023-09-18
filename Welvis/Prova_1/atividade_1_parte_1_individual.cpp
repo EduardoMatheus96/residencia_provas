@@ -8,7 +8,7 @@ struct Passageiro{
     string CPF;
     string nome;
     string dtNascimento;
-    string numAutorizacao;
+    int numAutorizacao = -1;
 };
 
 struct Roteiro{
@@ -72,6 +72,21 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
 }
 
 
+bool excluirPassageiro(vector<Passageiro> &vetPass, string CPF){
+
+
+    for (auto it = vetPass.begin(); it != vetPass.end(); it++) {
+        if (it->CPF == CPF) {
+            it = vetPass.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+
+}
+
+
 int main(void){
 
     string opcoesDoMenu = "(1) Incluir\n(2) Excluir\n(3) Alterar(Apenas por CPF)\n(4) Listar\n(5) Localizar (por CPF)\n(0) Sair";
@@ -88,7 +103,16 @@ int main(void){
         if(selectedOption != 0){
 
             if(selectedOption == 1)
-                inserirPassageiro(passageiros);            
+                inserirPassageiro(passageiros);   
+            if(selectedOption == 2){
+                cout << "Digite o CPF do passageiro" << endl;
+                string tempCPF;
+                cin >> tempCPF;
+                excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Não encontrado";
+            }
+
+            // if(selectedOption == 3)
+
             
         }else if (selectedOption == 0){
             break;
