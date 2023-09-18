@@ -19,9 +19,6 @@ struct Roteiro{
     string destino;
 };
 
-bool autorizacao(Passageiro passageiro){
-    return verificarMaiorIdade(passageiro.dtNascimento);       
-}
 
 bool verificarMaiorIdade(string dataNascimento) {
     // Extrai o dia, mês e ano da string de data de nascimento
@@ -50,6 +47,10 @@ bool verificarMaiorIdade(string dataNascimento) {
     }
 }
 
+bool autorizacao(Passageiro passageiro){
+    return !verificarMaiorIdade(passageiro.dtNascimento);       
+}
+
 void inserirPassageiro(vector<Passageiro> &vetPass){
 
     Passageiro passageiro;
@@ -61,38 +62,41 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
     cout << "Insira sua data de Nascimento 00/00/0000: " << endl;
     cin >> passageiro.dtNascimento;
     
+    if(autorizacao(passageiro)){
+        cout << "Insira seu numero de autorizacao: " << endl;
+        cin >> passageiro.numAutorizacao;
+    }
+
     vetPass.push_back(passageiro);   
 
 }
 
+
 int main(void){
 
     string opcoesDoMenu = "(1) Incluir\n(2) Excluir\n(3) Alterar(Apenas por CPF)\n(4) Listar\n(5) Localizar (por CPF)\n(0) Sair";
-    cout << opcoesDoMenu << endl;
-    int selectedOption;
 
     vector<Passageiro> passageiros;
     vector<Roteiro> roteiro;
+
+    cout << opcoesDoMenu << endl;
+    int selectedOption;
 
     do {
         cin >> selectedOption;
 
         if(selectedOption != 0){
-            cout << opcoesDoMenu << endl;
 
             if(selectedOption == 1)
-                inserirPassageiro(passageiros);
-
-
-
-            cout << passageiros[0].nome;
-            
+                inserirPassageiro(passageiros);            
             
         }else if (selectedOption == 0){
             break;
         }else {
             cout << "Opcao Invalida!!!" << endl;
         }
+
+        cout << opcoesDoMenu << endl;
 
     }while(selectedOption != 0);
 
