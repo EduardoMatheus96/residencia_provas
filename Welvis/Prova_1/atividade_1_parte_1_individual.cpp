@@ -108,7 +108,7 @@ int main(void){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
                 cin >> tempCPF;
-                excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Não encontrado";
+                cout << (excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Não encontrado") << endl;
             }
 
             // if(selectedOption == 3)
