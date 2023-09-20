@@ -51,7 +51,6 @@ bool autorizacao(Passageiro passageiro){
     return !verificarMaiorIdade(passageiro.dtNascimento);       
 }
 
-
 void inserirPassageiro(vector<Passageiro> &vetPass){
 
     Passageiro passageiro;    
@@ -84,13 +83,12 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
 
 }
 
-
 void inserirRoteiro(vector<Roteiro> &vetRot){   
     Roteiro roteiro;
 
     cout << "Insira seu Codigo: " << endl;
     cin >> roteiro.codigo;
-    cout << "Insira data e hora prevista: " << endl;
+    cout << "Insira data e hora prevista (00/00/0000 00:00): " << endl;
     while(getline(cin, roteiro.data_Hora_prevista)){
         if(roteiro.data_Hora_prevista != ""){
             break;
@@ -155,13 +153,12 @@ void Localizar(vector<Passageiro> &vetPass, string CPF){
             cout << "CPF: " << it->CPF << endl;
             cout << "Nome: " << it->nome << endl;
             cout << "Data de Nascimento: " << it->dtNascimento << endl;
-            cout << "Num Utorizacao: " << it->numAutorizacao << endl;
+            cout << "Num Autorizacao: " << it->numAutorizacao << endl;
             cout << endl << endl;
         }
     }
 
 }
-
 
 void LocalizarRoteiro(vector<Roteiro> &vetRot, int codigo){
 
@@ -177,6 +174,7 @@ void LocalizarRoteiro(vector<Roteiro> &vetRot, int codigo){
     }
 
 }
+
 
 void alterarPassageiro(vector<Passageiro> &vetPass, string CPF){
 
@@ -232,7 +230,6 @@ void alterarPassageiro(vector<Passageiro> &vetPass, string CPF){
     }
 
 }
-
 
 void alterarRoteiro(vector<Roteiro> &vetRot, int codigo){
 
@@ -314,6 +311,7 @@ void listarPassageiros(vector<Passageiro> &vetPass) {
     }
 }
 
+
 void listarRoteiros(vector<Roteiro> &vetRot) {
       
     for (Roteiro rot: vetRot){
@@ -325,6 +323,8 @@ void listarRoteiros(vector<Roteiro> &vetRot) {
         cout << endl << endl;
     }
 }
+
+
 
 int main(void){
 
@@ -346,14 +346,22 @@ int main(void){
             if(selectedOption == 2){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                getline(cin, tempCPF);
+                while(getline(cin, tempCPF)){
+                    if(tempCPF != ""){
+                        break;
+                    }
+                }
                 cout << (excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Nao encontrado") << endl;
             }
 
             if(selectedOption == 3){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                getline(cin, tempCPF);
+                while(getline(cin, tempCPF)){
+                    if(tempCPF != ""){
+                        break;
+                    }
+                }
                 alterarPassageiro(passageiros, tempCPF);
             }
 
@@ -363,7 +371,11 @@ int main(void){
             if(selectedOption == 5){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                getline(cin, tempCPF);
+                while(getline(cin, tempCPF)){
+                    if(tempCPF != ""){
+                        break;
+                    }
+                }
                 Localizar(passageiros, tempCPF);
             }
 
