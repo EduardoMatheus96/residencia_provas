@@ -228,3 +228,119 @@ void listarRoteiros() {
         imprimirRoteiro(roteiro);
     }
 }
+
+int main() {
+    int selectedOption;
+
+    do {
+        cout << "Menu Principal:" << endl;
+        cout << "(1) Gerenciamento de Passageiros" << endl;
+        cout << "(2) Gerenciamento de Roteiros" << endl;
+        cout << "(0) Sair" << endl;
+        cout << "Escolha uma opção: ";
+        cin >> selectedOption;
+
+        switch (selectedOption) {
+            case 1: {
+                int selectedPassageiroOption;
+                do {
+                    string cpfExcluir;
+                    string cpfAlterar;
+                    string cpfLocalizar;
+
+                    cout << "Gerenciamento de Passageiros:" << endl;
+                    cout << "(1) Incluir novo passageiro" << endl;
+                    cout << "(2) Excluir passageiro" << endl;
+                    cout << "(3) Alterar informações do passageiro" << endl;
+                    cout << "(4) Listar todos passageiros" << endl;
+                    cout << "(5) Localizar passageiro" << endl;
+                    cout << "(0) Voltar" << endl;
+
+                    cin >> selectedPassageiroOption;
+
+                    switch (selectedPassageiroOption) {
+                        case 1:
+                            incluirPassageiro();
+                            break;
+                        case 2:
+                            cout << "Insira o CPF do passageiro a ser excluído: ";
+                            cin >> cpfExcluir;
+                            excluirPassageiro(cpfExcluir);
+                            break;
+                        case 3:
+                            cout << "Insira o CPF do passageiro a ser alterado: ";
+                            cin >> cpfAlterar;
+                            alterarPassageiro(cpfAlterar);
+                            break;
+                        case 4:
+                            listarPassageiros();
+                            break;
+                        case 5:
+                            cout << "Insira o CPF do passageiro a ser localizado: ";
+                            cin >> cpfLocalizar;
+                            localizarPassageiro(cpfLocalizar);
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            cout << "Opção inválida." << endl;
+                    }
+                } while (selectedPassageiroOption != 0);
+                break;
+            }
+            case 2: {
+                int selectedRoteiroOption;
+                do {
+                    cout << "Gerenciamento de Roteiros:" << endl;
+                    cout << "(1) Incluir novo roteiro" << endl;
+                    cout << "(2) Excluir roteiro" << endl;
+                    cout << "(3) Alterar informações do roteiro" << endl;
+                    cout << "(4) Listar todos roteiros" << endl;
+                    cout << "(5) Localizar roteiro" << endl;
+                    cout << "(0) Voltar" << endl;
+
+                    cin >> selectedRoteiroOption;
+
+                    switch (selectedRoteiroOption) {
+                        case 1:
+                            incluirRoteiro();
+                            break;
+                        case 2:
+                            int codigoExcluir;
+                            cout << "Insira o código do roteiro a ser excluído: ";
+                            cin >> codigoExcluir;
+                            excluirRoteiro(codigoExcluir);
+                            break;
+                        case 3:
+                            int codigoAlterar;
+                            cout << "Insira o código do roteiro a ser alterado: ";
+                            cin >> codigoAlterar;
+                            alterarRoteiro(codigoAlterar);
+                            break;
+                        case 4:
+                            listarRoteiros();
+                            break;
+                        case 5:
+                            int codigoLocalizar;
+                            cout << "Insira o código do roteiro a ser localizado: ";
+                            cin >> codigoLocalizar;
+                            localizarRoteiro(codigoLocalizar);
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            cout << "Opção inválida." << endl;
+                    }
+                } while (selectedRoteiroOption != 0);
+                break;
+            }
+            case 0:
+                cout << "Saindo..." << endl;
+                break;
+            default:
+                cout << "Opção inválida." << endl;
+        }
+    } while (selectedOption != 0);
+
+    return 0;
+}
