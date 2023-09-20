@@ -314,6 +314,17 @@ void listarPassageiros(vector<Passageiro> &vetPass) {
     }
 }
 
+void listarRoteiros(vector<Roteiro> &vetRot) {
+      
+    for (Roteiro rot: vetRot){
+        cout << "Codigo: " << rot.codigo << endl;
+        cout << "Data e Hora Prevista: " << rot.data_Hora_prevista << endl;
+        cout << "Duracao Prevista: " << rot.duracao_prevista << endl;
+        cout << "Origem: " << rot.origem << endl;
+        cout << "Destino: " << rot.destino << endl;
+        cout << endl << endl;
+    }
+}
 
 int main(void){
 
