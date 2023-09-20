@@ -213,3 +213,18 @@ void alterarRoteiro(int codigo) {
     }
     cout << "Roteiro não encontrado." << endl;
 }
+void localizarRoteiro(int codigo) {
+    for (const Roteiro& roteiro : roteiros) {
+        if (roteiro.codigo == codigo) {
+            imprimirRoteiro(roteiro);
+            return;
+        }
+    }
+    cout << "Roteiro não encontrado." << endl;
+}
+
+void listarRoteiros() {
+    for (const Roteiro& roteiro : roteiros) {
+        imprimirRoteiro(roteiro);
+    }
+}
