@@ -172,3 +172,41 @@ void LocalizarPassageiro(vector<passageiro> dadosPassageiros){
     }
 }
 
+void IncluirRoteiro(vector<roteiro> &dadosRoteiros) {
+    roteiro temp;
+    cout << "Digite o Codigo do Roteiro: " << endl;
+    cin >> temp.Codigo;
+    cout << "Digite a Data e Hora (formato: DD/MM/AAAA HH:MM): " << endl;
+    cin.ignore();
+    getline(cin, temp.Data_Hora);
+    cout << "Digite a Duracao: " << endl;
+    getline(cin, temp.Duracao);
+    cout << "Digite a Origem: " << endl;
+    getline(cin, temp.Origem);
+    cout << "Digite o Destino: " << endl;
+    getline(cin, temp.Destino);
+    dadosRoteiros.push_back(temp);
+}
+
+void ExcluirRoteiro(vector<roteiro> &dadosRoteiros) {
+    char excluirRoteiro = 's';
+    while (excluirRoteiro == 's') {
+        cout << "Deseja excluir algum Roteiro (s/n)? ";
+        cin >> excluirRoteiro;
+
+        if (excluirRoteiro == 's') {
+            string CodigoParaExcluir;
+            cout << "Digite o Codigo do Roteiro a ser excluído: ";
+            cin.ignore();
+            getline(cin, CodigoParaExcluir);
+
+            for (size_t i = 0; i < dadosRoteiros.size(); ++i) {
+                if (dadosRoteiros[i].Codigo == CodigoParaExcluir) {
+                    dadosRoteiros.erase(dadosRoteiros.begin() + i);
+                    cout << "Roteiro excluído com sucesso." << endl;
+                    break; 
+                }
+            }
+        }
+    }
+}
