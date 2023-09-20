@@ -279,3 +279,20 @@ void ListarRoteiro(vector<roteiro> dadosRoteiros) {
         cout << endl << endl;
     }
 }
+
+void LocalizarRoteiro(vector<roteiro> dadosRoteiros) {
+    string CodigoBuscar;
+    cout << "Digite o Codigo do Roteiro cujo nome será alterado: ";
+    cin.ignore(); // Limpa o buffer
+    getline(cin, CodigoBuscar);
+
+    for (size_t i = 0; i < dadosRoteiros.size(); ++i) {
+        if (dadosRoteiros[i].Codigo == CodigoBuscar) {
+            int index = i; // Índice do roteiro encontrado
+
+            cout << "Dados do Roteiro " << dadosRoteiros[index].Codigo << ": "
+                 << dadosRoteiros[index].Data_Hora << " : " << dadosRoteiros[index].Duracao
+                 << " : " << dadosRoteiros[index].Origem << " : " << dadosRoteiros[index].Destino << endl;
+        }
+    }
+}
