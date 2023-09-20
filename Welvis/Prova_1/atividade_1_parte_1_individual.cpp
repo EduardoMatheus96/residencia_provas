@@ -134,6 +134,20 @@ bool excluirPassageiro(vector<Passageiro> &vetPass, string CPF){
 
 }
 
+bool excluirRoteiro(vector<Roteiro> &vetRot, int codigo){
+
+
+    for (auto it = vetRot.begin(); it != vetRot.end(); it++) {
+        if (it->codigo == codigo) {
+            it = vetRot.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+
+}
+
 void Localizar(vector<Passageiro> &vetPass, string CPF){
 
     for (auto it = vetPass.begin(); it != vetPass.end(); it++) {
