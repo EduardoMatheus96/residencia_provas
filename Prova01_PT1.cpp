@@ -210,3 +210,72 @@ void ExcluirRoteiro(vector<roteiro> &dadosRoteiros) {
         }
     }
 }
+
+void AlterarRoteiro(vector<roteiro> &dadosRoteiros) {
+    char alterarRoteiro;
+    do {
+        cout << "Deseja fazer alteracao (s/n)? ";
+        cin >> alterarRoteiro;
+
+        if (alterarRoteiro == 's') {
+            string CodigoBuscar;
+            cout << "Digite o Codigo do Roteiro cujo nome será alterado: ";
+            cin.ignore();
+            getline(cin, CodigoBuscar);
+
+            // Iterar pelos roteiros e procurar pelo Codigo
+            for (size_t i = 0; i < dadosRoteiros.size(); ++i) {
+                if (dadosRoteiros[i].Codigo == CodigoBuscar) {
+                    int index = i; // Índice do roteiro encontrado
+
+                    cout << "Dados atuais do Roteiro " << dadosRoteiros[index].Codigo << ": "
+                         << dadosRoteiros[index].Data_Hora << " : " << dadosRoteiros[index].Duracao
+                         << " : " << dadosRoteiros[index].Origem << " : " << dadosRoteiros[index].Destino << endl;
+
+                    char opcao;
+                    do {
+                        cout << "Alterar o Codigo (1), Data e Hora (2), Duracao (3), Origem (4), Destino (5)? ou Nenhuma alteracao(0): ";
+                        cin >> opcao;
+
+                        cin.ignore(); // Limpa o buffer após a leitura de opcao
+
+                        if (opcao == '1') {
+                            cout << "Digite o Codigo correto: ";
+                            getline(cin, dadosRoteiros[index].Codigo);
+                        } else if (opcao == '2') {
+                            cout << "Digite a Data e Hora Corretos (formato: DD/MM/AAAA HH:MM): ";
+                            getline(cin, dadosRoteiros[index].Data_Hora);
+                        } else if (opcao == '3') {
+                            cout << "Digite a Duracao Correta: ";
+                            getline(cin, dadosRoteiros[index].Duracao);
+                        } else if (opcao == '4') {
+                            cout << "Digite a Origem Correta: ";
+                            getline(cin, dadosRoteiros[index].Origem);
+                        } else if (opcao == '5') {
+                            cout << "Digite o Destino Correto: ";
+                            getline(cin, dadosRoteiros[index].Destino);
+                        } else if (opcao != '0') {
+                            cout << "Opção inválida. Use '1', '2', '3', '4', '5' ou '0'." << endl;
+                        }
+                    } while (opcao != '0');
+
+                    cout << "Dados atualizados do roteiro " << dadosRoteiros[index].Codigo << ": "
+                         << dadosRoteiros[index].Data_Hora << " : " << dadosRoteiros[index].Duracao << " : "
+                         << dadosRoteiros[index].Origem << " : " << dadosRoteiros[index].Destino << endl;
+                    break;
+                }
+            }
+        }
+    } while (alterarRoteiro == 's');
+}
+
+void ListarRoteiro(vector<roteiro> dadosRoteiros) {
+    for (size_t i = 0; i < dadosRoteiros.size(); i++) {
+        cout << "Codigo: " << dadosRoteiros[i].Codigo << endl;
+        cout << "Data e Hora: " << dadosRoteiros[i].Data_Hora << endl;
+        cout << "Duracao: " << dadosRoteiros[i].Duracao << endl;
+        cout << "Origem: " << dadosRoteiros[i].Origem << endl;
+        cout << "Destino: " << dadosRoteiros[i].Destino << endl;
+        cout << endl << endl;
+    }
+}
