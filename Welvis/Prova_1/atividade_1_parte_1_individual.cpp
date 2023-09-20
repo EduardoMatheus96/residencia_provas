@@ -4,7 +4,6 @@
 #include <regex>
 using namespace  std;
 
-
 struct Passageiro{
     string CPF;
     string nome;
@@ -65,6 +64,8 @@ bool verificarMaiorIdade(string dataNascimento) {
     int ano = stoi(dataNascimento.substr(6, 4));
 
     // Obtém a data atual
+
+    // Obs: No sistema windows as vezes não funciona. O código foi feito no sistema linux.
     time_t t = time(nullptr);
     tm* now = localtime(&t);
     int anoAtual = now->tm_year + 1900;
