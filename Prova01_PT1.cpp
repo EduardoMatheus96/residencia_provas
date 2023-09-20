@@ -65,3 +65,25 @@ void IncluirPassageiro(vector<passageiro> &dadosPassageiros){
     dadosPassageiros.push_back(temp);
 }
 
+void ExcluirPassageiro(vector<passageiro> &dadosPassageiros) {
+    char excluirPassageiro = 's';
+    while (excluirPassageiro == 's') {
+        cout << "Deseja excluir algum Passageiro (s/n)? ";
+        cin >> excluirPassageiro;
+
+        if (excluirPassageiro == 's') {
+            string CPFParaExcluir;
+            cout << "Digite o CPF do Passageiro a ser excluído: ";
+            cin.ignore();
+            getline(cin, CPFParaExcluir);
+
+            for (size_t i = 0; i < dadosPassageiros.size(); ++i) {
+                if (dadosPassageiros[i].CPF == CPFParaExcluir) {
+                    dadosPassageiros.erase(dadosPassageiros.begin() + i);
+                    cout << "Passageiro excluído com sucesso." << endl;
+                    break;
+                }
+            }
+        }
+    }
+}
