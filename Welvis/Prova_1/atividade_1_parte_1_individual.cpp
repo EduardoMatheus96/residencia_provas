@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <regex>
 using namespace  std;
 
 
@@ -19,6 +20,43 @@ struct Roteiro{
     string destino;
 };
 
+bool validarCPF(const string& cpf) {
+    // Verifica se o CPF possui 11 caracteres
+    if (cpf.length() != 11)
+        return false;
+
+    // Verifica se todos os caracteres são dígitos
+    for (char c : cpf) {
+        if (!isdigit(c))
+            return false;
+    }
+
+    return true;
+}
+
+bool verificarFormatoDataHora(const string& dataHora) {
+    // Expressão regular para o formato desejado
+    regex formato("([0-9]{2})/([0-9]{2})/([0-9]{4}) ([0-9]{2}):([0-9]{2})");
+
+    // Verificar se a string corresponde ao formato desejado
+    if (regex_match(dataHora, formato)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool verificarFormatoData(const string& dataHora) {
+    // Expressão regular para o formato desejado
+    regex formato("([0-9]{2})/([0-9]{2})/([0-9]{4})");
+
+    // Verificar se a string corresponde ao formato desejado
+    if (regex_match(dataHora, formato)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 bool verificarMaiorIdade(string dataNascimento) {
     // Extrai o dia, mês e ano da string de data de nascimento
@@ -55,12 +93,28 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
 
     Passageiro passageiro;    
 
-    cout << "Insira seu CPF: " << endl;
+
+    cout << "Insira seu CPF (Apenas numeros): " << endl;
     while(getline(cin, passageiro.CPF)){
         if(passageiro.CPF != ""){
             break;
         }
     }
+
+    while(!validarCPF(passageiro.CPF)){
+        passageiro.CPF = "";
+        cout << "Formato de CPF incorreto!!!\n\n\n";
+
+        cout << "Insira seu cpf: " << endl;    
+
+        while(getline(cin, passageiro.CPF)){
+            if(passageiro.CPF != ""){
+                break;
+            }
+        }
+    }
+
+
     cout << "Insira seu Nome: " << endl;
     while(getline(cin, passageiro.nome)){
         if(passageiro.nome != ""){
@@ -73,7 +127,20 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
             break;
         }
     }
-    
+
+    while(!verificarFormatoData(passageiro.dtNascimento)){
+        passageiro.dtNascimento = "";
+        cout << "Formato de data incorretos!!!\n\n\n";
+
+        cout << "Insira sua data de Nascimento 00/00/0000: " << endl;    
+
+        while(getline(cin, passageiro.dtNascimento)){
+            if(passageiro.dtNascimento != ""){
+                break;
+            }
+        }
+    }
+        
     if(autorizacao(passageiro)){
         cout << "Insira seu numero de autorizacao: " << endl;        
         cin >> passageiro.numAutorizacao;
@@ -88,10 +155,24 @@ void inserirRoteiro(vector<Roteiro> &vetRot){
 
     cout << "Insira seu Codigo: " << endl;
     cin >> roteiro.codigo;
-    cout << "Insira data e hora prevista (00/00/0000 00:00): " << endl;
+    cout << "Insira data e hora prevista (00/00/0000 00:00): " << endl;    
+
     while(getline(cin, roteiro.data_Hora_prevista)){
         if(roteiro.data_Hora_prevista != ""){
             break;
+        }
+    }
+
+    while(!verificarFormatoDataHora(roteiro.data_Hora_prevista)){
+        roteiro.data_Hora_prevista = "";
+        cout << "Formato de data e hora incorretos!!!\n\n\n";
+
+        cout << "Insira data e hora prevista (00/00/0000 00:00): " << endl;    
+
+        while(getline(cin, roteiro.data_Hora_prevista)){
+            if(roteiro.data_Hora_prevista != ""){
+                break;
+            }
         }
     }
     cout << "Insira a duracao prevista: " << endl;
