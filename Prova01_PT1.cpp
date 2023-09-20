@@ -87,3 +87,58 @@ void ExcluirPassageiro(vector<passageiro> &dadosPassageiros) {
         }
     }
 }
+
+void AlterarPassageiro(vector<passageiro> &dadosPassageiros) {
+    char alterarNome;
+    do {
+        cout << "Deseja fazer alteracao (s/n)? ";
+        cin >> alterarNome;
+
+        if (alterarNome == 's') {
+            string CPFbuscar;
+            cout << "Digite o CPF do Passageiro cujo nome será alterado: ";
+            cin.ignore(); 
+            getline(cin, CPFbuscar);
+
+            // Iterar pelos passageiros e procurar pelo CPF
+            for (size_t i = 0; i < dadosPassageiros.size(); ++i) {
+                if (dadosPassageiros[i].CPF == CPFbuscar) {
+                    int index = i; // Índice do passageiro encontrado
+
+                    cout << "Dados atuais do Passageiro " << dadosPassageiros[index].Nome << ": "
+                         << dadosPassageiros[index].DtNascimento << " : " << dadosPassageiros[index].NumAutorizacao
+                         << " : " << dadosPassageiros[index].CPF << endl;
+
+                    char opcao;
+                    do {
+                        cout << "Alterar o nome (1), Data de Nascimento (2), CPF (3), Numero de Autorizacao (4)? ou Nenhuma alteracao(0): ";
+                        cin >> opcao;
+
+                        cin.ignore();
+
+                        if (opcao == '1') {
+                            cout << "Digite o nome correto: ";
+                            getline(cin, dadosPassageiros[index].Nome);
+                        } else if (opcao == '2') {
+                            cout << "Digite a Data de Nascimento Correta: ";
+                            getline(cin, dadosPassageiros[index].DtNascimento);
+                        } else if (opcao == '3') {
+                            cout << "Digite o CPF Correto: ";
+                            getline(cin, dadosPassageiros[index].CPF);
+                        } else if (opcao == '4') {
+                            cout << "Digite o numero de autorizacao Correto: ";
+                            getline(cin, dadosPassageiros[index].NumAutorizacao);
+                        } else if (opcao != '0') {
+                            cout << "Opção inválida. Use '1', '2', '3', '4' ou '0'." << endl;
+                        }
+                    } while (opcao != '0');
+
+                    cout << "Dados atualizados do passageiro " << dadosPassageiros[index].Nome << ": "
+                         << dadosPassageiros[index].CPF << " : " << dadosPassageiros[index].DtNascimento << " : "
+                         << dadosPassageiros[index].NumAutorizacao << endl;
+                    break;
+                }
+            }
+        }
+    } while (alterarNome == 's');
+}
