@@ -328,12 +328,12 @@ void listarRoteiros(vector<Roteiro> &vetRot) {
 
 int main(void){
 
-    string opcoesDoMenu = "(1) Incluir\n(2) Excluir\n(3) Alterar(Apenas por CPF)\n(4) Listar\n(5) Localizar (por CPF)\n(0) Sair";
+    string opcoesDoMenuPassageiro = "\n\nMenu Passageiro\t\t\t\tMenu Roteiro\n\n(1) Incluir\t\t\t\t(6) Incluir\n(2) Excluir\t\t\t\t(7) Excluir\n(3) Alterar(Apenas por CPF)\t\t(8) Alterar(apenas por Codigo)\n(4) Listar\t\t\t\t(9) Listar\n(5) Localizar (por CPF)\t\t\t(10) Localizar (por Codigo)\n(0) Sair\n\n\n\n";
 
     vector<Passageiro> passageiros;
     vector<Roteiro> roteiro;
 
-    cout << opcoesDoMenu << endl;
+    cout << opcoesDoMenuPassageiro << endl;
     int selectedOption;
 
     do {
@@ -346,14 +346,14 @@ int main(void){
             if(selectedOption == 2){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                cin >> tempCPF;
-                cout << (excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Não encontrado") << endl;
+                getline(cin, tempCPF);
+                cout << (excluirPassageiro(passageiros, tempCPF) ? "Item Excluido" : "Item Nao encontrado") << endl;
             }
 
             if(selectedOption == 3){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                cin >> tempCPF;
+                getline(cin, tempCPF);
                 alterarPassageiro(passageiros, tempCPF);
             }
 
@@ -363,8 +363,37 @@ int main(void){
             if(selectedOption == 5){
                 cout << "Digite o CPF do passageiro" << endl;
                 string tempCPF;
-                cin >> tempCPF;
+                getline(cin, tempCPF);
                 Localizar(passageiros, tempCPF);
+            }
+
+            if(selectedOption == 6){
+                inserirRoteiro(roteiro);
+            }
+
+            if(selectedOption == 7){
+                cout << "Digite o codigo do roteiro" << endl;
+                int temCodigo;
+                cin >> temCodigo;
+                cout << (excluirRoteiro(roteiro, temCodigo) ? "Item Excluido" : "Item Nao encontrado") << endl;
+            }
+
+            if(selectedOption == 8){
+                cout << "Digite o codigo do roteiro" << endl;
+                int tempCodigo;
+                cin >> tempCodigo;
+                alterarRoteiro(roteiro, tempCodigo);
+            }
+
+            if(selectedOption == 9){
+                listarRoteiros(roteiro);
+            }
+
+            if(selectedOption == 10){
+                cout << "Digite o codigo do roteiro:" << endl;
+                int tempRoteiro;
+                cin >> tempRoteiro;
+                LocalizarRoteiro(roteiro, tempRoteiro);
             }
 
         }else if (selectedOption == 0){
@@ -373,13 +402,9 @@ int main(void){
             cout << "Opcao Invalida!!!" << endl;
         }
 
-        cout << opcoesDoMenu << endl;
+        cout << opcoesDoMenuPassageiro << endl;
 
     }while(selectedOption != 0);
 
-
-
-
     return 0;
 }
-
