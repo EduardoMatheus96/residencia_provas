@@ -475,40 +475,6 @@ void localizar(vector<Passageiro> &passageiros)
     }
 }
 
-void preencherPassageirosTeste(vector<Passageiro> &passageiros)
-{
-    string nomes[] = {"João", "Maria", "Pedro", "Ana", "Carlos", "Lúcia", "Paulo", "Camila", "Rodrigo", "Isabela"};
-
-    for (int i = 0; i < 10; ++i)
-    {
-        Passageiro passageiro;
-        passageiro.nome = nomes[i];
-
-        // Gera um CPF fictício válido para o passageiro
-        // Esta é uma implementação fictícia apenas para demonstração
-        // Em um cenário real, você precisaria gerar CPFs de forma diferente
-        std::string cpfFicticio = "123456789";
-        srand(time(0)); // Inicializa a semente aleatória
-        for (int j = 0; j < 2; ++j)
-            cpfFicticio += to_string(rand() % 10);
-        for (int j = 0; j < 6; ++j)
-            cpfFicticio += to_string(rand() % 10);
-
-        passageiro.cpf = cpfFicticio;
-
-        // Simula uma data de nascimento válida para o passageiro
-        // Se i for par, a data de nascimento será ajustada para garantir que tenha menos de 18 anos
-        int anoAtual = 2023; // Ano atual fictício para o exemplo
-        int anoNascimento = anoAtual - 18 - (i % 2); // Ajusta a data de nascimento para garantir menos de 18 anos
-        passageiro.dtNascimento = "01/01/" + to_string(anoNascimento);
-
-        if (i % 2 == 0) // Simular alguns passageiros menores de 18 anos
-            passageiro.numAutorizacao = i + 1;
-
-        passageiros.push_back(passageiro);
-    }
-}
-
 vector<string> menuNomes = {
     "Incluir.",
     "Excluir.",
