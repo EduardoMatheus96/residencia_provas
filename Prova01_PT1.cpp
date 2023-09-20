@@ -154,3 +154,21 @@ void ListarPassageiro(vector<passageiro> dadosPassageiros) {
     }
 
 }
+
+void LocalizarPassageiro(vector<passageiro> dadosPassageiros){
+    string CPFbuscar;
+    cout << "Digite o CPF do Passageiro cujo nome será alterado: ";
+    cin.ignore();
+    getline(cin, CPFbuscar);
+
+    for (size_t i = 0; i < dadosPassageiros.size(); ++i) {
+        if (dadosPassageiros[i].CPF == CPFbuscar) {
+            int index = i; // Índice do passageiro encontrado
+
+            cout << "Dados do Passageiro " << dadosPassageiros[index].Nome << ": "
+            << dadosPassageiros[index].DtNascimento << " : " << dadosPassageiros[index].NumAutorizacao
+            << " : " << dadosPassageiros[index].CPF << endl;
+        }
+    }
+}
+
