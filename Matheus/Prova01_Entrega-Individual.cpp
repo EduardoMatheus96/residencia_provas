@@ -66,3 +66,67 @@ void incluirPassageiro() {
 
     passageiros.push_back(passageiro);
 }
+void excluirPassageiro(const string& cpf) {
+    for (auto it = passageiros.begin(); it != passageiros.end(); ++it) {
+        if (it->CPF == cpf) {
+            cout << "O passageiro: " << it->nome << " com o CPF: " << it->CPF << " foi excluído com sucesso!" << endl;
+            passageiros.erase(it);
+            return;
+        }
+    }
+    cout << "Passageiro não encontrado." << endl;
+}
+
+void alterarPassageiro(const string& cpf) {
+    for (auto& passageiro : passageiros) {
+        if (passageiro.CPF == cpf) {
+            int escolha;
+            imprimirPassageiro(passageiro);
+            do {
+                cout << "Qual o campo do passageiro você deseja alterar: " << endl;
+                cout << "1. Nome" << endl;
+                cout << "2. CPF" << endl;
+                cout << "3. Data de nascimento" << endl;
+                cout << "Insira sua escolha: ";
+                cin >> escolha;
+                cin.ignore();
+
+                switch (escolha) {
+                    case 1:
+                        cout << "Insira o novo nome: ";
+                        getline(cin, passageiro.nome);
+                        break;
+                    case 2:
+                        cout << "Insira o novo CPF: ";
+                        cin >> passageiro.CPF;
+                        break;
+                    case 3:
+                        cout << "Insira a nova data de nascimento (dd/mm/aaaa): ";
+                        cin >> passageiro.dtNascimento;
+                        break;
+                    default:
+                        cout << "Opção inválida." << endl;
+                }
+            } while (escolha < 1 || escolha > 3);
+            imprimirPassageiro(passageiro);
+            return;
+        }
+    }
+    cout << "Passageiro não encontrado." << endl;
+}
+
+void localizarPassageiro(const string& cpf) {
+    for (const Passageiro& passageiro : passageiros) {
+        if (passageiro.CPF == cpf) {
+            imprimirPassageiro(passageiro);
+            return;
+        }
+    }
+    cout << "Passageiro não encontrado." << endl;
+}
+
+void listarPassageiros() {
+    for (const Passageiro& passageiro : passageiros) {
+        imprimirPassageiro(passageiro);
+    }
+}
