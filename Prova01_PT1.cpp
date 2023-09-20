@@ -142,3 +142,15 @@ void AlterarPassageiro(vector<passageiro> &dadosPassageiros) {
         }
     } while (alterarNome == 's');
 }
+
+void ListarPassageiro(vector<passageiro> dadosPassageiros) {
+    for (size_t i = 0; i < dadosPassageiros.size(); i++)
+    {
+        cout << "CPF: " << dadosPassageiros[i].CPF << endl;
+        cout << "Nome: " << dadosPassageiros[i].Nome << endl;
+        cout << "Data de Nascimento: " << dadosPassageiros[i].DtNascimento << endl;
+        cout << "Numero de  Autorizacao: " << dadosPassageiros[i].NumAutorizacao << endl;
+        cout << endl << endl;
+    }
+
+}
