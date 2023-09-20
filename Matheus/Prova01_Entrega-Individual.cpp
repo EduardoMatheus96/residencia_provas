@@ -130,3 +130,28 @@ void listarPassageiros() {
         imprimirPassageiro(passageiro);
     }
 }
+void imprimirRoteiro(const Roteiro& roteiro) {
+    cout << "Código do Roteiro: " << roteiro.codigo << endl;
+    cout << "Data e Hora Prevista: " << roteiro.data_Hora_prevista << endl;
+    cout << "Duração Prevista: " << roteiro.duracao_prevista << endl;
+    cout << "Origem: " << roteiro.origem << endl;
+    cout << "Destino: " << roteiro.destino << endl;
+    cout << endl;
+}
+
+void incluirRoteiro() {
+    Roteiro roteiro;
+    cout << "Insira o código do roteiro: ";
+    cin >> roteiro.codigo;
+    cout << "Insira a data e hora prevista (dd/mm/aaaa hh:mm): ";
+    cin.ignore();
+    getline(cin, roteiro.data_Hora_prevista);
+    cout << "Insira a duração prevista: ";
+    getline(cin, roteiro.duracao_prevista);
+    cout << "Insira a origem: ";
+    getline(cin, roteiro.origem);
+    cout << "Insira o destino: ";
+    getline(cin, roteiro.destino);
+
+    roteiros.push_back(roteiro);
+}
