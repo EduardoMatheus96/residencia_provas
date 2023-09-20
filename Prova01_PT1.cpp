@@ -296,3 +296,78 @@ void LocalizarRoteiro(vector<roteiro> dadosRoteiros) {
         }
     }
 }
+
+int main() {
+    vector<passageiro> dadosPassageiros;
+    vector<roteiro> dadosRoteiros;
+    
+    cout << "\nSelecione uma das seguintes opções:" << endl;
+    cout << left << setw(30) << "1. Incluir Passageiro";
+    cout << setw(30) << "2. Excluir Passageiro";
+    cout << setw(30) << "3. Alterar Passageiro";
+    cout << setw(30) << "4. Localizar Passageiro";
+    cout << setw(30) << "5. Listar Passageiro" << endl;
+    cout << left << setw(30) << "6. Incluir Roteiro";
+    cout << setw(30) << "7. Excluir Roteiro";
+    cout << setw(30) << "8. Alterar Roteiro";
+    cout << setw(30) << "9. Localizar Roteiro";
+    cout << setw(30) << "10. Listar Roteiro" << endl;
+
+        cout << left << setw(30) << "0. Sair do PROGRAMA!!!" << endl;
+    int selectedOption;
+
+    do {
+        cin >> selectedOption;
+
+        if (selectedOption != 0) {
+
+            if (selectedOption == 1)
+                IncluirPassageiro(dadosPassageiros);
+            if (selectedOption == 2) {
+                ExcluirPassageiro(dadosPassageiros);
+            }
+            if (selectedOption == 3) {
+                AlterarPassageiro(dadosPassageiros);
+            }
+            if (selectedOption == 4)
+                LocalizarPassageiro(dadosPassageiros);
+            if (selectedOption == 5) {
+                ListarPassageiro(dadosPassageiros);
+            }
+            if (selectedOption == 6)
+                IncluirRoteiro(dadosRoteiros);
+            if (selectedOption == 7) {
+                ExcluirRoteiro(dadosRoteiros);
+            }
+            if (selectedOption == 8) {
+                AlterarRoteiro(dadosRoteiros);
+            }
+            if (selectedOption == 9)
+                LocalizarRoteiro(dadosRoteiros);
+            if (selectedOption == 10) {
+                ListarRoteiro(dadosRoteiros);
+            }
+
+        } else if (selectedOption == 0) {
+            break;
+        } else {
+            cout << "Opcao Invalida!!!" << endl;
+        }
+
+        cout << "\nSelecione uma das seguintes opções:" << endl;
+        cout << left << setw(30) << "1. Incluir Passageiro";
+        cout << setw(30) << "2. Excluir Passageiro";
+        cout << setw(30) << "3. Alterar Passageiro";
+        cout << setw(30) << "4. Localizar Passageiro";
+        cout << setw(30) << "5. Listar Passageiro" << endl;
+        cout << left << setw(30) << "6. Incluir Roteiro";
+        cout << setw(30) << "7. Excluir Roteiro";
+        cout << setw(30) << "8. Alterar Roteiro";
+        cout << setw(30) << "9. Localizar Roteiro";
+        cout << setw(30) << "10. Listar Roteiro" << endl;
+        cout << left << setw(30) << "0. Sair do PROGRAMA!!!" << endl;
+
+    } while (selectedOption != 0);
+
+    return 0;
+}
