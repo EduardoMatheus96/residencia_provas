@@ -84,6 +84,42 @@ void inserirPassageiro(vector<Passageiro> &vetPass){
 
 }
 
+
+void inserirRoteiro(vector<Roteiro> &vetRot){   
+    Roteiro roteiro;
+
+    cout << "Insira seu Codigo: " << endl;
+    cin >> roteiro.codigo;
+    cout << "Insira data e hora prevista: " << endl;
+    while(getline(cin, roteiro.data_Hora_prevista)){
+        if(roteiro.data_Hora_prevista != ""){
+            break;
+        }
+    }
+    cout << "Insira a duracao prevista: " << endl;
+    while(getline(cin, roteiro.duracao_prevista)){
+        if(roteiro.duracao_prevista != ""){
+            break;
+        }
+    }  
+    cout << "Insira a origem: " << endl;
+    while(getline(cin, roteiro.origem)){
+        if(roteiro.origem != ""){
+            break;
+        }
+    }  
+    cout << "Insira o destino: " << endl;
+    while(getline(cin, roteiro.destino)){
+        if(roteiro.destino != ""){
+            break;
+        }
+    }  
+    
+    vetRot.push_back(roteiro);   
+
+}
+
+
 bool excluirPassageiro(vector<Passageiro> &vetPass, string CPF){
 
 
