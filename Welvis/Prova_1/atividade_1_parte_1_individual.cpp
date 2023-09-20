@@ -51,26 +51,38 @@ bool autorizacao(Passageiro passageiro){
     return !verificarMaiorIdade(passageiro.dtNascimento);       
 }
 
+
 void inserirPassageiro(vector<Passageiro> &vetPass){
 
-    Passageiro passageiro;
+    Passageiro passageiro;    
 
-    cout << "Insira se CPF: " << endl;
-    cin >> passageiro.CPF;
+    cout << "Insira seu CPF: " << endl;
+    while(getline(cin, passageiro.CPF)){
+        if(passageiro.CPF != ""){
+            break;
+        }
+    }
     cout << "Insira seu Nome: " << endl;
-    cin >> passageiro.nome;
+    while(getline(cin, passageiro.nome)){
+        if(passageiro.nome != ""){
+            break;
+        }
+    }
     cout << "Insira sua data de Nascimento 00/00/0000: " << endl;
-    cin >> passageiro.dtNascimento;
+    while(getline(cin, passageiro.dtNascimento)){
+        if(passageiro.dtNascimento != ""){
+            break;
+        }
+    }
     
     if(autorizacao(passageiro)){
-        cout << "Insira seu numero de autorizacao: " << endl;
+        cout << "Insira seu numero de autorizacao: " << endl;        
         cin >> passageiro.numAutorizacao;
     }
 
     vetPass.push_back(passageiro);   
 
 }
-
 
 bool excluirPassageiro(vector<Passageiro> &vetPass, string CPF){
 
