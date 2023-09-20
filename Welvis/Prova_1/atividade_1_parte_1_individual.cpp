@@ -163,6 +163,21 @@ void Localizar(vector<Passageiro> &vetPass, string CPF){
 }
 
 
+void LocalizarRoteiro(vector<Roteiro> &vetRot, int codigo){
+
+    for (auto it = vetRot.begin(); it != vetRot.end(); it++) {
+        if (it->codigo == codigo) {
+            cout << "Codigo: " << it->codigo << endl;
+            cout << "Data e Hora Prevista: " << it->data_Hora_prevista << endl;
+            cout << "Duracao Prevista: " << it->duracao_prevista << endl;
+            cout << "Origem: " << it->origem << endl;
+            cout << "Destino: " << it->destino << endl;
+            cout << endl << endl;
+        }
+    }
+
+}
+
 void alterarPassageiro(vector<Passageiro> &vetPass, string CPF){
 
     for (auto it = vetPass.begin(); it != vetPass.end(); it++) {
