@@ -155,3 +155,61 @@ void incluirRoteiro() {
 
     roteiros.push_back(roteiro);
 }
+void excluirRoteiro(int codigo) {
+    for (auto it = roteiros.begin(); it != roteiros.end(); ++it) {
+        if (it->codigo == codigo) {
+            cout << "O roteiro com código: " << it->codigo << " foi excluído com sucesso!" << endl;
+            roteiros.erase(it);
+            return;
+        }
+    }
+    cout << "Roteiro não encontrado." << endl;
+}
+
+void alterarRoteiro(int codigo) {
+    for (auto& roteiro : roteiros) {
+        if (roteiro.codigo == codigo) {
+            int escolha;
+            imprimirRoteiro(roteiro);
+            do {
+                cout << "Qual o campo do roteiro você deseja alterar: " << endl;
+                cout << "1. Código" << endl;
+                cout << "2. Data e Hora Prevista" << endl;
+                cout << "3. Duração Prevista" << endl;
+                cout << "4. Origem" << endl;
+                cout << "5. Destino" << endl;
+                cout << "Insira sua escolha: ";
+                cin >> escolha;
+                cin.ignore();
+
+                switch (escolha) {
+                    case 1:
+                        cout << "Insira o novo código: ";
+                        cin >> roteiro.codigo;
+                        break;
+                    case 2:
+                        cout << "Insira a nova data e hora prevista (dd/mm/aaaa hh:mm): ";
+                        getline(cin, roteiro.data_Hora_prevista);
+                        break;
+                    case 3:
+                        cout << "Insira a nova duração prevista: ";
+                        getline(cin, roteiro.duracao_prevista);
+                        break;
+                    case 4:
+                        cout << "Insira a nova origem: ";
+                        getline(cin, roteiro.origem);
+                        break;
+                    case 5:
+                        cout << "Insira o novo destino: ";
+                        getline(cin, roteiro.destino);
+                        break;
+                    default:
+                        cout << "Opção inválida." << endl;
+                }
+            } while (escolha < 1 || escolha > 5);
+            imprimirRoteiro(roteiro);
+            return;
+        }
+    }
+    cout << "Roteiro não encontrado." << endl;
+}
