@@ -128,21 +128,32 @@ void alterarPassageiro(vector<Passageiro> &vetPass, string CPF){
             string res;
             cin >> res;
             if(res == "Sim"){
-                cin >> it->nome;                
+                while(getline(cin, it->nome)){
+                    if(it->nome != ""){
+                        break;
+                    }
+                }         
             }
 
             cout << "Deseja alterar o CPF: (Sim) | (Nao)" << it->CPF << endl;
             cin >> res;
             if(res == "Sim"){
                 cout << "CPF: " << endl;
-                cin >> it->CPF;
-
+                while(getline(cin, it->CPF)){
+                    if(it->CPF != ""){
+                        break;
+                    }
+                }
             }           
                             
             cout << "Deseja alterar a data de nascimento: (Sim) | (Nao)" << endl;
             cin >> res;
             if(res == "Sim"){
-                cin >> it->dtNascimento;
+                while(getline(cin, it->dtNascimento)){
+                    if(it->dtNascimento != ""){
+                        break;
+                    }
+                }
             }
             
             cout << "Deseja alterar o num autorizacao: (Sim) | (Nao)" << endl;
