@@ -233,6 +233,77 @@ void alterarPassageiro(vector<Passageiro> &vetPass, string CPF){
 
 }
 
+
+void alterarRoteiro(vector<Roteiro> &vetRot, int codigo){
+
+    for (auto it = vetRot.begin(); it != vetRot.end(); it++) {
+        if (it->codigo == codigo) {    
+            
+            cout << "Codigo: " << it->codigo << endl;
+            cout << "Data e Hora Prevista: " << it->data_Hora_prevista << endl;
+            cout << "Duracao Prevista: " << it->duracao_prevista << endl;
+            cout << "Origem: " << it->origem << endl;
+            cout << "Destino: " << it->destino << endl;
+            cout << endl << endl;
+            
+            cout << "Deseja alterar o Codigo: (Sim) | (Nao)" << endl;
+            string res;
+            cin >> res;
+            if(res == "Sim"){
+                cout << "Codigo: " << endl;
+                cin >> it->codigo;                
+            }              
+
+            cout << "Deseja alterar a Data e Hora Prevista: (Sim) | (Nao)" << endl;
+            cin >> res;
+            if(res == "Sim"){
+                cout << "Data e Hora Prevista: " << endl;
+                while(getline(cin, it->data_Hora_prevista)){
+                    if(it->data_Hora_prevista != ""){
+                        break;
+                    }
+                }
+            }           
+                            
+            cout << "Deseja alterar a Duracao Prevista: (Sim) | (Nao)" << endl;
+            cin >> res;
+            if(res == "Sim"){
+                cout << "Duracao Prevista: " << endl;
+                while(getline(cin, it->duracao_prevista)){
+                    if(it->duracao_prevista != ""){
+                        break;
+                    }
+                }
+            }
+            
+            cout << "Deseja alterar a Origem: (Sim) | (Nao)" << endl;
+            cin >> res;
+            if(res == "Sim"){
+                cout << "Origem: " << endl;
+                while(getline(cin, it->origem)){
+                    if(it->origem != ""){
+                        break;
+                    }
+                }
+            }
+
+            cout << "Deseja alterar o Destino: (Sim) | (Nao)" << endl;
+            cin >> res;
+            if(res == "Sim"){
+                cout << "Destino: " << endl;
+                while(getline(cin, it->destino)){
+                    if(it->destino != ""){
+                        break;
+                    }
+                }
+            }
+                
+            LocalizarRoteiro(vetRot, it->codigo);
+        }
+    }
+
+}
+
 void listarPassageiros(vector<Passageiro> &vetPass) {
     for (Passageiro pass: vetPass){
         cout << "CPF: " << pass.CPF << endl;
