@@ -270,11 +270,10 @@ void alterarRoteiro(vector<Roteiro> &roteiros)
             {
                 cout << "Qual o campo do roteiro voce deseja alterar: " << endl;
                 cout << "1.Codigo" << endl;
-                cout << "2.Data prevista" << endl;
-                cout << "3.Hora prevista" << endl;
-                cout << "4.Duracao da viagem prevista" << endl;
-                cout << "5.Origem da viagem" << endl;
-                cout << "6.Destino da viagem" << endl;
+                cout << "2.Data e hora prevista" << endl;
+                cout << "3.Duracao da viagem prevista" << endl;
+                cout << "4.Origem da viagem" << endl;
+                cout << "5.Destino da viagem" << endl;
                 cout << "Insira sua escolha: ";
                 cin >> escolha;
                 cout << endl;
@@ -305,19 +304,41 @@ void alterarRoteiro(vector<Roteiro> &roteiros)
                     break;
                 case 3:
                     cout << "Digite a nova duracao da viagem prevista: ";
-                    cin >> duracaoPrevista;
+                    while (getline(cin, duracaoPrevista))
+                    {
+                        if(duracaoPrevista != ""){
+                            break;
+                        }
+                    }
+                    // cin >> duracaoPrevista;
                     cout << endl;
                     it->duracaoPrevista = duracaoPrevista;
                     break;
                 case 4:
                     cout << "Digite a nova origem da viagem: ";
-                    cin >> origem;
+                    while (getline(cin, origem))
+                    {
+                        if (origem != "")
+                        {
+                            break;
+                        }
+                        
+                    }
+                    // cin >> origem;
                     cout << endl;
                     it->origem = origem;
                     break;
                 case 5:
                     cout << "Digite o novo destino da viagem: ";
-                    cin >> destino;
+                    while (getline(cin, destino))
+                    {
+                        if (destino != "")
+                        {
+                            break;
+                        }
+                        
+                    }
+                    // cin >> destino;
                     cout << endl;
                     it->destino = destino;
                     break;
