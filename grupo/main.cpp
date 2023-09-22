@@ -982,7 +982,16 @@ void registrarOcorrenciaPorRoteiro(vector<Embarque> &embarques)
         {
             cout << "Para o embarque de " << embarque.roteiro.origem << " para " << embarque.roteiro.destino << ":\n";
             cout << "Digite a descrição da ocorrência: ";
-            cin >> embarque.ocorrencia.descricao;
+            while (getline(cin, embarque.ocorrencia.descricao))
+            {
+                if (embarque.ocorrencia.descricao != "")
+                {
+                    break;
+                }
+                
+            }
+            
+            // cin >> embarque.ocorrencia.descricao;
 
             cout << "Digite a data da ocorrencia (formato: DD/MM/AAAA): ";
             cin >> embarque.ocorrencia.data_Hora.data;
