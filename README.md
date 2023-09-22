@@ -8,3 +8,10 @@ Para testar o embarque é necessário:
 > 2. Coletar CPF de passageiros para criar o embarque.
 > 3. Na criação de um embarque é necessário colocar o nome do roteiro com a inicial maiúscula.
 > 4. A partir deste momento é possível incluir, listar, .... ocorrências.
+
+<img src="/grupo/screens/Roteiro - Incluir e Localizar.png">
+
+<img src="/grupo/screens/Roteiro - Alterando.png">
+
+<img src="/grupo/screens/Roteiro - Listar.png">
+
