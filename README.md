@@ -16,13 +16,16 @@ Para testar o embarque é necessário:
 > 4. Na criação de um embarque é necessário colocar o nome do roteiro com a inicial maiúscula.
 > 4.1 Introduzindo e localizando roteiro.
 <img src="/grupo/screens/Roteiro - Incluir e Localizar.png">
+
 > 5. Alterando roteiro.
 <img src="/grupo/screens/Roteiro - Alterando.png">
+
 > 6. Listando Roteiro.
 <img src="/grupo/screens/Roteiro - Listar.png">
 
 > 7. A partir deste momento é possível incluir, listar, .... ocorrências.
 > 7.1 Registrando ocorrência por roteiro.
 <img src="/grupo/screens/Registrar ocorrencia por roteiro.png">
+
 > 7.2 Listando ocorrência por passageiro.
 <img src="/grupo/screens/Listar ocorrencia por passageiro.png">
