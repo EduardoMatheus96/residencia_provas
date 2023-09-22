@@ -24,6 +24,7 @@ Para testar o embarque é necessário:
 <img src="/grupo/screens/Roteiro - Listar.png">
 
 > 7. A partir deste momento é possível incluir, listar, .... ocorrências.
+
 > 7.1 Registrando ocorrência por roteiro.
 <img src="/grupo/screens/Registrar ocorrencia por roteiro.png">
 
