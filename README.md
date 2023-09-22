@@ -9,6 +9,7 @@ Para testar o embarque é necessário:
 
 > 2. Coletar CPF de passageiros para criar o embarque.
 <img src="/grupo/screens/Teste Módulo Embarque - Gerando lista de Passageiros e Registrando Embarques.png">
+
 > 3. Listar embarques.
 <img src="/grupo/screens/Teste Módulo Embarque - Registro e Listagem de Embarques.png.png">
 
